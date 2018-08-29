@@ -210,7 +210,7 @@ static const KeyInfo Keys[128] PROGMEM = {
     SHIFT_KEY(114, HID_KEYBOARD_SC_LEFT_SHIFT, L_SHIFT), //SHIFT
     SHIFT_KEY(125, HID_KEYBOARD_SC_RIGHT_SHIFT, R_SHIFT),//SHIFT LOCK
     PC_KEY(116, HID_KEYBOARD_SC_TAB, NULL), //TAB
-    SHIFT_KEY(125, HID_KEYBOARD_SC_LOCKING_CAPS_LOCK, CAPS_LOCK), //caps lock
+    SHIFT_KEY(125, HID_KEYBOARD_SC_CAPS_LOCK, CAPS_LOCK), //caps lock
     PC_KEY(121, HID_KEYBOARD_SC_KEYPAD_0_AND_INSERT, NULL), //num 0
     PC_KEY(122,HID_KEYBOARD_SC_KEYPAD_1_AND_END, NULL), //num 1
     PC_KEY(123, HID_KEYBOARD_SC_KEYPAD_4_AND_LEFT_ARROW, NULL), //num 4 
@@ -318,19 +318,6 @@ static void KeyDown(/*PROGMEM*/ const KeyInfo *key, bool noKeyUps)
 
 }
 
-/*
-static bool IsKeyDown(HidUsageID key)
-{
-  int i;
-  if (!key) return false;
-  for (i = 0; i < NKeysDown; i++) {
-    if (KeysDown[i] == key)
-      return true;
-  }
-  return false;
-}
-*/
-
 static void AddKeyReport(USB_KeyboardReport_Data_t* KeyboardReport)
 {
   
@@ -367,7 +354,7 @@ static void AddKeyReport(USB_KeyboardReport_Data_t* KeyboardReport)
       KeyboardReport->KeyCode[i] = KeysDown[i];
     }
   }
-
+ 
 }
 
 
